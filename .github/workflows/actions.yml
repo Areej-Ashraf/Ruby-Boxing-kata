@@ -22,4 +22,4 @@ jobs:
         ruby-version: ${{matrix.ruby-version}}
         bundle-cache: true
     - name: Run Rspecs
-      uses: bundle exec rake spec
+      run: bundle exec rake spec
