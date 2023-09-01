@@ -1,0 +1,25 @@
+name: Build-Workflow
+
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: main
+
+permissions:
+    contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: [2.7.2, 3.0.0]
+    steps: 
+    - uses: actions/checkout@
+    - name : Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{matrix.ruby-version}}
+        bundle-cache: true
+    - name: Run Rspecs
+      uses: bundle exec rake spec
