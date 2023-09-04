@@ -16,11 +16,10 @@ jobs:
         ruby-version: [2.7.2, 3.0.0]
     steps: 
     - uses: actions/checkout@v3
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
       with:
-        ruby-version: ${{matrix.ruby-version}}
-        bundle-cache: false
-        cache-version: 2 # Change this to your desired cache version
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run Rspecs
       run: bundle exec rake spec
