@@ -20,6 +20,6 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{matrix.ruby-version}}
-        bundle-cache: true
+        bundle-cache: false
     - name: Run Rspecs
       run: bundle exec rake spec
